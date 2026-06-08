@@ -2667,7 +2667,7 @@
       ctx.strokeStyle = 'rgba(250,204,21,.9)';
       ctx.lineWidth = 6;
       ctx.beginPath();
-      ctx.moveTo(CX, 115); ctx.lineTo(CX, 445); ctx.stroke();
+      ctx.moveTo(CX, 115); ctx.lineTo(CX, 540); ctx.stroke();
       ctx.restore();
       text(tr('얇은 금박'), CX, 86, 23, '#facc15');
 
@@ -2781,7 +2781,7 @@
       const grad = ctx.createRadialGradient(CX - 12, CY - 12, 2, CX, CY, 45);
       grad.addColorStop(0, '#fff'); grad.addColorStop(.25, pal.nucleus); grad.addColorStop(1, '#7c2d12');
       circle(CX, CY, 42, grad, '#fff', 2);
-      text(tr('핵'), CX, CY, 18, '#fff');
+      text(tr('핵'), CX, CY, 18, '#000000');
       state.bohrAngle += .025 / state.bohrN;
       const r = radii[state.bohrN - 1];
       const ex = CX + Math.cos(state.bohrAngle) * r;
@@ -2940,7 +2940,7 @@
       const grad = ctx.createRadialGradient(CX - 12, CY - 12, 1, CX, CY, 42);
       grad.addColorStop(0, '#fff'); grad.addColorStop(.25, pal.nucleus); grad.addColorStop(1, '#7c2d12');
       circle(CX, CY, 40, grad, '#fff', 2);
-      text(tr('핵'), CX, CY, 17, '#fff');
+      text(tr('핵'), CX, CY, 17, '#000000');
 
       ctx.save();
       ctx.strokeStyle = 'rgba(226,232,240,.3)';
@@ -3099,7 +3099,7 @@
         ctx.fillStyle = `rgba(${state.colorblind ? '86,180,233' : '45,212,255'},${0.10 + a * 0.50})`;
         ctx.fillRect(screenX + 4, y - 2, 24, 4);
       }
-      text(tr('물결무늬 확률'), screenX - 60, bottomY + 28, 15, '#cbd5e1');
+      text(tr('물결무늬 확률'), screenX - 100, bottomY + 5, 15, '#cbd5e1');
 
       // 누적된 검출점
       for (const hit of state.doubleSlitHits) {
@@ -3257,7 +3257,7 @@
         ctx.fillStyle = `rgba(${rgb},${0.08 + a * 0.70})`;
         ctx.fillRect(screenX + 5, y - 2, 24, 4);
       }
-      text(dsText('lightScreenPattern'), screenX - 72, bottomY + 28, 15, '#cbd5e1');
+      text(dsText('lightScreenPattern'), screenX - 100, bottomY + 5, 15, '#cbd5e1');
 
       // 누적된 광자 검출점
       for (const hit of state.lightHits) {
