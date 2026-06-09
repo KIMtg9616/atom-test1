@@ -437,10 +437,44 @@
       transition: opacity .2s ease, transform .2s ease;
     }
     .lang-toast.show { opacity: 1; transform: translateY(0); }
+
+    /* Page information memo: gear icon popup */
+    .page-info-memo {
+      width: min(380px, calc(100vw - 28px));
+      max-width: min(380px, calc(100vw - 28px));
+      line-height: 1.45;
+    }
+    .page-info-memo h3 {
+      margin: 0 0 .45rem;
+      color: var(--accent2);
+      font-size: 1rem;
+    }
+    .page-info-memo dl {
+      margin: 0;
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: .35rem .6rem;
+    }
+    .page-info-memo dt {
+      color: var(--accent);
+      font-weight: 800;
+    }
+    .page-info-memo dd {
+      margin: 0;
+      color: var(--text);
+    }
+    .page-info-memo .notice {
+      margin-top: .55rem;
+      padding-top: .55rem;
+      border-top: 1px solid rgba(148,163,184,.28);
+      color: var(--muted);
+      font-size: .92rem;
+    }
     @media (max-width: 620px) {
       .language-panel { left: .8rem; right: .8rem; top: .6rem; justify-content: center; border-radius: 1rem; flex-wrap: wrap; }
       header { padding-top: 5.2rem; }
       .lang-toast { left: .8rem; right: .8rem; top: 5rem; }
+      .page-info-memo { width: auto; max-width: none; }
     }
 
     @media (max-width: 1050px) {
@@ -467,8 +501,19 @@
     <button id="langJaBtn" class="lang-btn" type="button" aria-label="日本語" title="日本語"><span aria-hidden="true">🇯🇵</span><span class="lang-label">JA</span></button>
     <button id="langViBtn" class="lang-btn" type="button" aria-label="Tiếng Việt" title="Tiếng Việt"><span aria-hidden="true">🇻🇳</span><span class="lang-label">VI</span></button>
     <button id="langMoreBtn" class="lang-btn" type="button" aria-label="다른 언어 보기" title="언어 추가중"><span aria-hidden="true">🌐</span><span class="lang-label">+</span></button>
+    <button id="pageInfoBtn" class="lang-btn" type="button" aria-label="웹 페이지 정보 보기" title="웹 페이지 정보"><span aria-hidden="true">⚙️</span><span class="lang-label">INFO</span></button>
   </div>
   <div id="langToast" class="lang-toast" role="status" aria-live="polite">언어 추가중...</div>
+  <div id="pageInfoMemo" class="lang-toast page-info-memo" role="status" aria-live="polite">
+    <h3>웹 페이지 정보</h3>
+    <dl>
+      <dt>웹 버전</dt><dd>v3.0 시범판</dd>
+      <dt>최근 업데이트</dt><dd>2026-06-09</dd>
+      <dt>업데이트 내용</dt><dd>언어 선택, 현대 원자모형 이중슬릿 전자·빛 실험, 접근성 기능, 페이지 정보 버튼 추가</dd>
+      <dt>개발자 정보</dt><dd>김태균 · ktaeg0616@gmail.com</dd>
+    </dl>
+    <div class="notice"><strong>공지사항</strong><br>본 페이지는 수업용 체험형 시뮬레이션 시범 자료입니다. 일부 물리량은 이해를 돕기 위한 상대값으로 표현됩니다.</div>
+  </div>
   <a class="skip-link" href="#simulation">시뮬레이션으로 바로가기</a>
   <header>
     <section class="hero" aria-labelledby="mainTitle">
@@ -1456,6 +1501,85 @@
             "questionPrefix": "Câu hỏi khám phá."
       }
 };
+
+    const pageInfoText = {
+      ko: {
+        title: '웹 페이지 정보',
+        aria: '웹 페이지 정보',
+        buttonAria: '웹 페이지 정보 보기',
+        buttonTitle: '웹 페이지 정보',
+        versionLabel: '웹 버전',
+        versionValue: 'v3.0 시범판',
+        updatedLabel: '최근 업데이트',
+        updatedDate: '2026-06-09',
+        updateContentLabel: '업데이트 내용',
+        updateContent: '언어 선택, 현대 원자모형 이중슬릿 전자·빛 실험, 접근성 기능, 페이지 정보 버튼 추가',
+        developerLabel: '개발자 정보',
+        noticeLabel: '공지사항',
+        notice: '본 페이지는 수업용 체험형 시뮬레이션 시범 자료입니다. 일부 물리량은 이해를 돕기 위한 상대값으로 표현됩니다.'
+      },
+      en: {
+        title: 'Web Page Information',
+        aria: 'Web page information',
+        buttonAria: 'View web page information',
+        buttonTitle: 'Web page information',
+        versionLabel: 'Web version',
+        versionValue: 'v3.0 pilot version',
+        updatedLabel: 'Latest update',
+        updatedDate: '2026-06-09',
+        updateContentLabel: 'Update details',
+        updateContent: 'Language selection, modern atomic model double-slit experiments with electrons and light, accessibility features, and page information button added',
+        developerLabel: 'Developer information',
+        noticeLabel: 'Notice',
+        notice: 'This page is a pilot interactive simulation resource for classroom use. Some physical quantities are shown as relative values to support understanding.'
+      },
+      zh: {
+        title: '网页信息',
+        aria: '网页信息',
+        buttonAria: '查看网页信息',
+        buttonTitle: '网页信息',
+        versionLabel: '网页版本',
+        versionValue: 'v3.0 试用版',
+        updatedLabel: '最近更新',
+        updatedDate: '2026-06-09',
+        updateContentLabel: '更新内容',
+        updateContent: '新增语言选择、现代原子模型中电子与光的双缝实验、无障碍功能以及页面信息按钮',
+        developerLabel: '开发者信息',
+        noticeLabel: '公告',
+        notice: '本页面是用于课堂的互动式模拟试用资料。部分物理量为了帮助理解，以相对值表示。'
+      },
+      ja: {
+        title: 'ウェブページ情報',
+        aria: 'ウェブページ情報',
+        buttonAria: 'ウェブページ情報を見る',
+        buttonTitle: 'ウェブページ情報',
+        versionLabel: 'ウェブ版',
+        versionValue: 'v3.0 試用版',
+        updatedLabel: '最新更新日',
+        updatedDate: '2026-06-09',
+        updateContentLabel: '更新内容',
+        updateContent: '言語選択、現代の原子模型における電子・光の二重スリット実験、アクセシビリティ機能、ページ情報ボタンを追加',
+        developerLabel: '開発者情報',
+        noticeLabel: 'お知らせ',
+        notice: 'このページは授業用の体験型シミュレーション試用教材です。一部の物理量は理解を助けるため相対値で表しています。'
+      },
+      vi: {
+        title: 'Thông tin trang web',
+        aria: 'Thông tin trang web',
+        buttonAria: 'Xem thông tin trang web',
+        buttonTitle: 'Thông tin trang web',
+        versionLabel: 'Phiên bản web',
+        versionValue: 'v3.0 bản thử nghiệm',
+        updatedLabel: 'Cập nhật gần nhất',
+        updatedDate: '2026-06-09',
+        updateContentLabel: 'Nội dung cập nhật',
+        updateContent: 'Đã thêm lựa chọn ngôn ngữ, thí nghiệm hai khe với electron và ánh sáng trong mô hình nguyên tử hiện đại, chức năng hỗ trợ truy cập và nút thông tin trang',
+        developerLabel: 'Thông tin nhà phát triển',
+        noticeLabel: 'Thông báo',
+        notice: 'Trang này là tài liệu mô phỏng tương tác thử nghiệm dùng cho lớp học. Một số đại lượng vật lí được biểu diễn bằng giá trị tương đối để hỗ trợ việc hiểu bài.'
+      }
+    };
+
     const translationText = {
       "en": {
             "그림 설명 보기가 꺼져 있습니다.": "Image descriptions are turned off.",
@@ -2344,6 +2468,35 @@ clearMeasurePoints: '측정 점 지우기',
       showLanguageToast.timer = setTimeout(() => toast.classList.remove('show'), 1600);
     }
 
+    function renderPageInfoMemo() {
+      const memo = document.getElementById('pageInfoMemo');
+      if (!memo) return;
+
+      const info = pageInfoText[state.lang] || pageInfoText.ko;
+      const developerValue = '김태균 · ktaeg0616@gmail.com';
+
+      memo.setAttribute('aria-label', info.aria);
+      memo.innerHTML = `
+        <h3>${info.title}</h3>
+        <dl>
+          <dt>${info.versionLabel}</dt><dd>${info.versionValue}</dd>
+          <dt>${info.updatedLabel}</dt><dd>${info.updatedDate}</dd>
+          <dt>${info.updateContentLabel}</dt><dd>${info.updateContent}</dd>
+          <dt>${info.developerLabel}</dt><dd>${developerValue}</dd>
+        </dl>
+        <div class="notice"><strong>${info.noticeLabel}</strong><br>${info.notice}</div>
+      `;
+    }
+
+    function showPageInfoMemo() {
+      const memo = document.getElementById('pageInfoMemo');
+      if (!memo) return;
+      renderPageInfoMemo();
+      memo.classList.add('show');
+      clearTimeout(showPageInfoMemo.timer);
+      showPageInfoMemo.timer = setTimeout(() => memo.classList.remove('show'), 8000);
+    }
+
     function applyLanguage() {
       const tx = uiText[state.lang] || uiText.ko;
       document.documentElement.lang = tx.htmlLang;
@@ -2402,6 +2555,13 @@ clearMeasurePoints: '측정 점 지우기',
       document.getElementById('langJaBtn').classList.toggle('active', state.lang === 'ja');
       document.getElementById('langViBtn').classList.toggle('active', state.lang === 'vi');
       document.getElementById('langToast').textContent = tx.moreMsg;
+      const pageInfoBtn = document.getElementById('pageInfoBtn');
+      const infoTx = pageInfoText[state.lang] || pageInfoText.ko;
+      if (pageInfoBtn) {
+        pageInfoBtn.setAttribute('aria-label', infoTx.buttonAria);
+        pageInfoBtn.setAttribute('title', infoTx.buttonTitle);
+      }
+      renderPageInfoMemo();
     }
 
     function setLanguage(lang) {
@@ -3835,6 +3995,7 @@ clearMeasurePoints: '측정 점 지우기',
     document.getElementById('langJaBtn').addEventListener('click', () => setLanguage('ja'));
     document.getElementById('langViBtn').addEventListener('click', () => setLanguage('vi'));
     document.getElementById('langMoreBtn').addEventListener('click', () => setLanguage('more'));
+    document.getElementById('pageInfoBtn').addEventListener('click', showPageInfoMemo);
 
     document.querySelectorAll('.model-btn').forEach(btn => {
       btn.addEventListener('click', () => setModel(btn.dataset.model));
