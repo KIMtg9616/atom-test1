@@ -3558,7 +3558,7 @@ clearMeasurePoints: '측정 점 지우기',
         ctx.beginPath(); ctx.arc(barrierX, slitBottom, movingR, -0.55, 0.55); ctx.stroke();
       }
       ctx.restore();
-      text(dsText('continuousWave'), 590, 142, 16, lightColor, 'center', '700');
+      text(dsText('lightWaveGuide'), 590, 142, 16, lightColor, 'center', '700');
 
       // 검출 스크린과 빛 간섭무늬
       roundRect(screenX, topY, 34, bottomY - topY, 8, `rgba(${rgb},.11)`, lightColor);
