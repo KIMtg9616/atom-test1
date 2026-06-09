@@ -2112,6 +2112,15 @@
     pathOff: '경로 관찰 끄기',
     clearScreen: '스크린 지우기',
 
+    cloudControls: '현대 원자모형 체험: 오비탈과 측정',
+orbital1s: '1s 전자구름',
+orbital2p: '2p 오비탈',
+cloudBrightness: '전자구름 밝기',
+measure1: '측정 1회',
+measure10: '측정 10회',
+measure100: '측정 100회',
+clearMeasurePoints: '측정 점 지우기',
+
     electronCaption: '현대 원자모형: 전자를 하나씩 보내도 스크린에는 간섭무늬가 누적됩니다.',
     photonCaption: '현대 원자모형: 빛도 이중슬릿을 지나면 파장과 슬릿 간격에 따라 간섭무늬가 나타납니다.',
     cloudCaption: '현대 원자모형: 오비탈·측정과 이중슬릿 실험을 전환하여 탐구할 수 있습니다.'
@@ -2311,10 +2320,13 @@
 };
 
     function dsText(key, vars = {}) {
-      const pack = doubleSlitText[state.lang] || doubleSlitText.ko;
-      let template = pack[key] || doubleSlitText.ko[key] || key;
-      return template.replace(/\{(\w+)\}/g, (_, name) => String(vars[name] ?? ''));
-    }
+  const pack = doubleSlitText[state.lang] || doubleSlitText.ko;
+  let template = pack[key] || doubleSlitText.ko[key] || key;
+
+  return template.replace(/\{(\w+)\}/g, (_, name) => {
+    return vars[name] ?? '';
+  });
+}
 
     function setSwitchText(inputId, labelText) {
       const input = document.getElementById(inputId);
@@ -3200,7 +3212,7 @@
       // 전자 발사기
       roundRect(sourceX - 45, CY - 56, 72, 112, 16, 'rgba(148,163,184,.22)', 'rgba(226,232,240,.78)');
       circle(sourceX - 10, CY, 11, pal.electron2, '#fff', 2);
-      text(tr('전자 발사기'), sourceX, CY + 84, 18, '#e2e8f0');
+      text(dsText('electronSource'), sourceX, CY + 84, 18, '#e2e8f0');
 
       // 이중슬릿 장벽
       ctx.save();
@@ -3211,7 +3223,7 @@
       ctx.beginPath(); ctx.moveTo(barrierX, slitTop + slitH / 2); ctx.lineTo(barrierX, slitBottom - slitH / 2); ctx.stroke();
       ctx.beginPath(); ctx.moveTo(barrierX, slitBottom + slitH / 2); ctx.lineTo(barrierX, bottomY); ctx.stroke();
       ctx.restore();
-      text(tr('이중슬릿'), barrierX, topY - 30, 20, '#facc15');
+      text(dsText('doubleSlit'), barrierX, topY - 30, 20, '#facc15');
       roundRect(barrierX - 22, slitTop - slitH / 2, 44, slitH, 9, 'rgba(56,189,248,.16)', pal.cloud);
       roundRect(barrierX - 22, slitBottom - slitH / 2, 44, slitH, 9, 'rgba(56,189,248,.16)', pal.cloud);
 
@@ -3225,20 +3237,20 @@
           ctx.beginPath(); ctx.arc(barrierX, slitBottom, r + (state.time * 14) % 38, -0.55, 0.55); ctx.stroke();
         }
         ctx.restore();
-        text(tr('파동처럼 두 슬릿을 지나감'), 580, 142, 17, pal.cloud, 'center', '700');
+        text(dsText('electronWaveGuide'), 580, 142, 17, pal.cloud, 'center', '700');
       } else {
-        text(tr('경로를 관찰하면 간섭무늬가 약해집니다.'), 580, 142, 17, '#facc15', 'center', '700');
+        text(dsText('whichPathWeak'), 580, 142, 17, '#facc15', 'center', '700');
       }
 
       // 검출 스크린과 확률 무늬
       roundRect(screenX, topY, 32, bottomY - topY, 8, 'rgba(56,189,248,.12)', pal.cloud);
-      text(tr('검출 스크린'), screenX + 16, topY - 30, 18, pal.cloud);
+      text(dsText('detectionScreen'), screenX + 16, topY - 30, 18, pal.cloud);
       for (let y = topY + 8; y < bottomY - 8; y += 5) {
         const a = doubleSlitIntensity(y);
         ctx.fillStyle = `rgba(${state.colorblind ? '86,180,233' : '45,212,255'},${0.10 + a * 0.50})`;
         ctx.fillRect(screenX + 4, y - 2, 24, 4);
       }
-      text(tr('물결무늬 확률'), screenX - 100, bottomY + 5, 15, '#cbd5e1');
+      text(dsText('probabilityPattern'), screenX - 100, bottomY + 5, 15, '#cbd5e1');
 
       // 누적된 검출점
       for (const hit of state.doubleSlitHits) {
@@ -3276,11 +3288,11 @@
       }
 
       roundRect(78, 602, 804, 78, 16, 'rgba(15,23,42,.74)', 'rgba(148,163,184,.25)');
-      text(formatMsg('doubleSlitStatus', {
-        count: state.doubleSlitHits.length,
-        mode: state.doubleSlitWhichPath ? tr('관찰함') : tr('관찰하지 않음')
-      }), 480, 625, 21, '#f8fafc');
-      text(tr('전자 하나씩 보내도 시간이 지나면 스크린에 무늬가 쌓입니다.'), 480, 656, 18, '#cbd5e1', 'center', '600');
+      text(dsText('electronStatus', {
+  count: state.doubleSlitHits.length,
+  mode: state.doubleSlitWhichPath ? dsText('observed') : dsText('notObserved')
+}), 480, 625, 21, '#f8fafc');
+      text(dsText('electronGuide'), 480, 656, 18, '#cbd5e1', 'center', '600');
     }
 
 
@@ -3371,7 +3383,7 @@
       ctx.beginPath(); ctx.moveTo(barrierX, slitTop + slitH / 2); ctx.lineTo(barrierX, slitBottom - slitH / 2); ctx.stroke();
       ctx.beginPath(); ctx.moveTo(barrierX, slitBottom + slitH / 2); ctx.lineTo(barrierX, bottomY); ctx.stroke();
       ctx.restore();
-      text(tr('이중슬릿'), barrierX, topY - 30, 20, '#facc15');
+      text(dsText('doubleSlit'), barrierX, topY - 30, 20, '#facc15');
       roundRect(barrierX - 22, slitTop - slitH / 2, 44, slitH, 9, `rgba(${rgb},.18)`, lightColor);
       roundRect(barrierX - 22, slitBottom - slitH / 2, 44, slitH, 9, `rgba(${rgb},.18)`, lightColor);
 
@@ -3689,46 +3701,108 @@
       }
 
       if (state.model === 'modern') {
-        dynamicControls.append(group('현대 원자모형 체험 선택', [
-          button('보기: 오비탈과 측정', () => { state.modernView = 'cloud'; renderControls(); }, state.modernView === 'cloud' ? 'active' : ''),
-          button(dsText('electronButton'), () => { state.modernView = 'doubleSlitElectron'; renderControls(); }, (state.modernView === 'doubleSlit' || state.modernView === 'doubleSlitElectron') ? 'active' : ''),
-          button(dsText('photonButton'), () => { state.modernView = 'doubleSlitPhoton'; renderControls(); }, state.modernView === 'doubleSlitPhoton' ? 'active' : '')
-        ]));
+  dynamicControls.append(group(dsText('modernChoose'), [
+    button(dsText('cloudButton'), () => {
+      state.modernView = 'cloud';
+      renderControls();
+    }, state.modernView === 'cloud' ? 'active' : ''),
 
-        if (state.modernView === 'cloud') {
-          dynamicControls.append(group('현대 원자모형 체험: 오비탈과 측정', [
-            button('1s 전자구름', () => { state.modernOrbital = '1s'; state.measurePoints = []; renderControls(); }, state.modernOrbital === '1s' ? 'active' : ''),
-            button('2p 오비탈', () => { state.modernOrbital = '2p'; state.measurePoints = []; renderControls(); }, state.modernOrbital === '2p' ? 'active' : ''),
-            slider('전자구름 밝기', 20, 100, state.cloudBrightness, v => state.cloudBrightness = v, '%'),
-            button('측정 1회', () => addMeasurements(1), 'primary'),
-            button('측정 10회', () => addMeasurements(10), 'primary'),
-            button('측정 100회', () => addMeasurements(100), 'primary'),
-            button('측정 점 지우기', () => { state.measurePoints = []; }, 'danger')
-          ]));
-          canvasCaption.textContent = tr('현대 원자모형: 오비탈·측정과 이중슬릿 실험을 전환하여 탐구할 수 있습니다.');
-        } else if (state.modernView === 'doubleSlit' || state.modernView === 'doubleSlitElectron') {
-          dynamicControls.append(group(dsText('electronControls'), [
-            slider('슬릿 간격', 60, 170, state.doubleSlitGap, v => state.doubleSlitGap = v),
-            slider('간섭 선명도', 20, 100, state.doubleSlitWaveStrength, v => state.doubleSlitWaveStrength = v, '%'),
-            button('전자 1개 보내기', () => spawnDoubleSlitElectrons(1), 'primary'),
-            button('전자 20개 보내기', () => spawnDoubleSlitElectrons(20), 'primary'),
-            button('전자 100개 보내기', () => spawnDoubleSlitElectrons(100), 'primary'),
-            button(state.doubleSlitWhichPath ? '경로 관찰 끄기' : '경로 관찰 켜기', () => { state.doubleSlitWhichPath = !state.doubleSlitWhichPath; state.doubleSlitHits = []; state.doubleSlitParticles = []; renderControls(); }, state.doubleSlitWhichPath ? 'warning' : 'good'),
-            button('스크린 지우기', () => { state.doubleSlitHits = []; state.doubleSlitParticles = []; }, 'danger')
-          ]));
-          canvasCaption.textContent = tr('현대 원자모형: 전자를 하나씩 보내도 스크린에는 간섭무늬가 누적됩니다.');
-        } else if (state.modernView === 'doubleSlitPhoton') {
-          dynamicControls.append(group(dsText('photonControls'), [
-            slider(dsText('wavelength'), 380, 700, state.lightWavelength, v => { state.lightWavelength = v; }, ' nm'),
-            slider('슬릿 간격', 60, 170, state.lightSlitGap, v => { state.lightSlitGap = v; }),
-            button(dsText('photon1'), () => spawnDoubleSlitPhotons(1), 'primary'),
-            button(dsText('photon20'), () => spawnDoubleSlitPhotons(20), 'primary'),
-            button(dsText('photon100'), () => spawnDoubleSlitPhotons(100), 'primary'),
-            button('스크린 지우기', () => { state.lightHits = []; state.lightPhotons = []; }, 'danger')
-          ]));
-          canvasCaption.textContent = dsText('lightCaption');
-        }
-      }
+    button(dsText('electronButton'), () => {
+      state.modernView = 'doubleSlitElectron';
+      renderControls();
+    }, state.modernView === 'doubleSlitElectron' || state.modernView === 'doubleSlit' ? 'active' : ''),
+
+    button(dsText('photonButton'), () => {
+      state.modernView = 'doubleSlitPhoton';
+      renderControls();
+    }, state.modernView === 'doubleSlitPhoton' ? 'active' : '')
+  ]));
+
+  if (state.modernView === 'cloud') {
+    dynamicControls.append(group(dsText('cloudControls'), [
+      button(dsText('orbital1s'), () => {
+        state.modernOrbital = '1s';
+        state.measurePoints = [];
+        renderControls();
+      }, state.modernOrbital === '1s' ? 'active' : ''),
+
+      button(dsText('orbital2p'), () => {
+        state.modernOrbital = '2p';
+        state.measurePoints = [];
+        renderControls();
+      }, state.modernOrbital === '2p' ? 'active' : ''),
+
+      slider(dsText('cloudBrightness'), 20, 100, state.cloudBrightness, v => {
+        state.cloudBrightness = v;
+      }, '%'),
+
+      button(dsText('measure1'), () => addMeasurements(1), 'primary'),
+      button(dsText('measure10'), () => addMeasurements(10), 'primary'),
+      button(dsText('measure100'), () => addMeasurements(100), 'primary'),
+
+      button(dsText('clearMeasurePoints'), () => {
+        state.measurePoints = [];
+      }, 'danger')
+    ]));
+
+    canvasCaption.textContent = dsText('cloudCaption');
+
+  } else if (state.modernView === 'doubleSlit' || state.modernView === 'doubleSlitElectron') {
+    dynamicControls.append(group(dsText('electronControls'), [
+      slider(dsText('slitGap'), 60, 170, state.doubleSlitGap, v => {
+        state.doubleSlitGap = v;
+      }),
+
+      slider(dsText('interferenceClarity'), 20, 100, state.doubleSlitWaveStrength, v => {
+        state.doubleSlitWaveStrength = v;
+      }, '%'),
+
+      button(dsText('sendElectron1'), () => spawnDoubleSlitElectrons(1), 'primary'),
+      button(dsText('sendElectron20'), () => spawnDoubleSlitElectrons(20), 'primary'),
+      button(dsText('sendElectron100'), () => spawnDoubleSlitElectrons(100), 'primary'),
+
+      button(
+        state.doubleSlitWhichPath ? dsText('pathOff') : dsText('pathOn'),
+        () => {
+          state.doubleSlitWhichPath = !state.doubleSlitWhichPath;
+          state.doubleSlitHits = [];
+          state.doubleSlitParticles = [];
+          renderControls();
+        },
+        state.doubleSlitWhichPath ? 'warning' : 'good'
+      ),
+
+      button(dsText('clearScreen'), () => {
+        state.doubleSlitHits = [];
+        state.doubleSlitParticles = [];
+      }, 'danger')
+    ]));
+
+    canvasCaption.textContent = dsText('electronCaption');
+
+  } else if (state.modernView === 'doubleSlitPhoton') {
+    dynamicControls.append(group(dsText('lightControls'), [
+      slider(dsText('wavelengthRange'), 380, 700, state.lightWavelength, v => {
+        state.lightWavelength = v;
+      }, ' nm'),
+
+      slider(dsText('slitGap'), 60, 170, state.lightSlitGap, v => {
+        state.lightSlitGap = v;
+      }),
+
+      button(dsText('sendPhoton1'), () => spawnDoubleSlitPhotons(1), 'primary'),
+      button(dsText('sendPhoton20'), () => spawnDoubleSlitPhotons(20), 'primary'),
+      button(dsText('sendPhoton100'), () => spawnDoubleSlitPhotons(100), 'primary'),
+
+      button(dsText('clearScreen'), () => {
+        state.lightHits = [];
+        state.lightPhotons = [];
+      }, 'danger')
+    ]));
+
+    canvasCaption.textContent = dsText('photonCaption');
+  }
+}
     }
 
     function renderTimeline() {
