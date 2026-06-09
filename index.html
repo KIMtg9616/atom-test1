@@ -2069,107 +2069,246 @@
     // 현대 원자모형의 이중슬릿 실험 추가 문구입니다.
     // 기존 번역 구조를 크게 바꾸지 않고 새 실험에 필요한 문구만 별도로 관리합니다.
     const doubleSlitText = {
-      ko: {
-        electronButton: '이중슬릿실험 전자(물질)',
-        photonButton: '이중슬릿실험 빛(광자)',
-        electronTitle: '현대: 이중슬릿 실험 전자(물질)',
-        photonTitle: '현대: 이중슬릿 실험 빛(광자)',
-        electronControls: '이중슬릿 실험 전자(물질) 조작',
-        photonControls: '이중슬릿 실험 빛(광자) 조작',
-        lightSource: '빛 발사기',
-        photons: '광자',
-        lightWave: '빛 파동',
-        wavelength: '파장 영역',
-        photon1: '광자 1개 보내기',
-        photon20: '광자 20개 보내기',
-        photon100: '광자 100개 보내기',
-        lightCaption: '현대 원자모형: 빛도 이중슬릿을 지나면 파장과 슬릿 간격에 따라 간섭무늬가 나타납니다.',
-        photonStatus: '광자 검출 {count}개 · 파장 {wavelength} nm · 슬릿 간격 {gap}',
-        lightGuide: '파장이 길수록 무늬 간격이 넓어지고, 슬릿 간격이 커질수록 무늬 간격은 좁아집니다.',
-        lightScreenPattern: '빛의 간섭무늬',
-        continuousWave: '두 슬릿에서 나온 빛 파동이 겹쳐 밝고 어두운 무늬를 만듭니다.'
-      },
-      en: {
-        electronButton: 'Double-slit: electron (matter)',
-        photonButton: 'Double-slit: light (photon)',
-        electronTitle: 'Modern: double-slit experiment with electrons',
-        photonTitle: 'Modern: double-slit experiment with light',
-        electronControls: 'Double-slit electron controls',
-        photonControls: 'Double-slit light controls',
-        lightSource: 'light source',
-        photons: 'photons',
-        lightWave: 'light wave',
-        wavelength: 'wavelength range',
-        photon1: 'Send 1 photon',
-        photon20: 'Send 20 photons',
-        photon100: 'Send 100 photons',
-        lightCaption: 'Modern atomic model: light also creates interference after passing through a double slit, depending on wavelength and slit spacing.',
-        photonStatus: 'Photon detections {count} · wavelength {wavelength} nm · slit spacing {gap}',
-        lightGuide: 'Longer wavelength makes wider fringes; larger slit spacing makes narrower fringes.',
-        lightScreenPattern: 'light interference pattern',
-        continuousWave: 'Light waves from the two slits overlap and form bright and dark fringes.'
-      },
-      zh: {
-        electronButton: '双缝实验：电子（物质）',
-        photonButton: '双缝实验：光（光子）',
-        electronTitle: '现代：电子双缝实验',
-        photonTitle: '现代：光子双缝实验',
-        electronControls: '电子双缝实验控制',
-        photonControls: '光子双缝实验控制',
-        lightSource: '光源',
-        photons: '光子',
-        lightWave: '光波',
-        wavelength: '波长范围',
-        photon1: '发射1个光子',
-        photon20: '发射20个光子',
-        photon100: '发射100个光子',
-        lightCaption: '现代原子模型：光通过双缝后，也会根据波长和缝间距形成干涉条纹。',
-        photonStatus: '光子探测 {count} 个 · 波长 {wavelength} nm · 缝间距 {gap}',
-        lightGuide: '波长越长，条纹间距越宽；缝间距越大，条纹间距越窄。',
-        lightScreenPattern: '光的干涉条纹',
-        continuousWave: '来自两条缝的光波相互叠加，形成明暗条纹。'
-      },
-      ja: {
-        electronButton: '二重スリット実験：電子（物質）',
-        photonButton: '二重スリット実験：光（光子）',
-        electronTitle: '現代：電子の二重スリット実験',
-        photonTitle: '現代：光の二重スリット実験',
-        electronControls: '電子の二重スリット実験の操作',
-        photonControls: '光の二重スリット実験の操作',
-        lightSource: '光源',
-        photons: '光子',
-        lightWave: '光の波',
-        wavelength: '波長領域',
-        photon1: '光子を1個送る',
-        photon20: '光子を20個送る',
-        photon100: '光子を100個送る',
-        lightCaption: '現代原子模型：光も二重スリットを通ると、波長とスリット間隔によって干渉模様が現れます。',
-        photonStatus: '光子検出 {count}個・波長 {wavelength} nm・スリット間隔 {gap}',
-        lightGuide: '波長が長いほど縞の間隔は広くなり、スリット間隔が大きいほど縞の間隔は狭くなります。',
-        lightScreenPattern: '光の干渉模様',
-        continuousWave: '二つのスリットから出た光の波が重なり、明暗の縞を作ります。'
-      },
-      vi: {
-        electronButton: 'Hai khe: electron (vật chất)',
-        photonButton: 'Hai khe: ánh sáng (photon)',
-        electronTitle: 'Hiện đại: thí nghiệm hai khe với electron',
-        photonTitle: 'Hiện đại: thí nghiệm hai khe với ánh sáng',
-        electronControls: 'Điều khiển hai khe electron',
-        photonControls: 'Điều khiển hai khe ánh sáng',
-        lightSource: 'nguồn sáng',
-        photons: 'photon',
-        lightWave: 'sóng ánh sáng',
-        wavelength: 'vùng bước sóng',
-        photon1: 'Gửi 1 photon',
-        photon20: 'Gửi 20 photon',
-        photon100: 'Gửi 100 photon',
-        lightCaption: 'Mô hình hiện đại: ánh sáng cũng tạo vân giao thoa sau khi qua hai khe, tùy theo bước sóng và khoảng cách khe.',
-        photonStatus: 'Số photon phát hiện {count} · bước sóng {wavelength} nm · khoảng cách khe {gap}',
-        lightGuide: 'Bước sóng dài hơn làm vân rộng hơn; khoảng cách khe lớn hơn làm vân hẹp hơn.',
-        lightScreenPattern: 'vân giao thoa ánh sáng',
-        continuousWave: 'Sóng ánh sáng từ hai khe chồng lên nhau và tạo các vân sáng tối.'
-      }
-    };
+  ko: {
+    modernChoose: '현대 원자모형 체험 선택',
+    cloudButton: '보기: 오비탈과 측정',
+    electronButton: '이중슬릿실험 전자(물질)',
+    photonButton: '이중슬릿실험 빛(광자)',
+
+    electronTitle: '현대: 이중슬릿 실험 전자(물질)',
+    photonTitle: '현대: 이중슬릿 실험 빛(광자)',
+
+    electronSource: '전자 발사기',
+    lightSource: '빛 발사기',
+    doubleSlit: '이중슬릿',
+    detectionScreen: '검출 스크린',
+    probabilityPattern: '물결무늬 확률',
+    lightScreenPattern: '빛의 간섭무늬',
+
+    electronWaveGuide: '파동처럼 두 슬릿을 지나감',
+    whichPathWeak: '경로를 관찰하면 간섭무늬가 약해집니다.',
+    lightWaveGuide: '두 슬릿에서 나온 빛의 파동이 겹쳐 밝고 어두운 무늬를 만듭니다.',
+
+    electronStatus: '이중슬릿 누적 {count}개 · 경로 관찰: {mode}',
+    photonStatus: '광자 검출 {count}개 · 파장 {wavelength} nm · 슬릿 간격 {gap}',
+    electronGuide: '전자 하나씩 보내도 시간이 지나면 스크린에 무늬가 쌓입니다.',
+    lightGuide: '파장이 길수록 무늬 간격은 넓어지고, 슬릿 간격이 클수록 무늬 간격은 좁아집니다.',
+
+    observed: '관찰함',
+    notObserved: '관찰 안 함',
+
+    electronControls: '이중슬릿 전자(물질) 조작',
+    lightControls: '이중슬릿 빛(광자) 조작',
+    slitGap: '슬릿 간격',
+    interferenceClarity: '간섭 선명도',
+    wavelengthRange: '파장 영역',
+    sendElectron1: '전자 1개 보내기',
+    sendElectron20: '전자 20개 보내기',
+    sendElectron100: '전자 100개 보내기',
+    sendPhoton1: '광자 1개 보내기',
+    sendPhoton20: '광자 20개 보내기',
+    sendPhoton100: '광자 100개 보내기',
+    pathOn: '경로 관찰 켜기',
+    pathOff: '경로 관찰 끄기',
+    clearScreen: '스크린 지우기',
+
+    electronCaption: '현대 원자모형: 전자를 하나씩 보내도 스크린에는 간섭무늬가 누적됩니다.',
+    photonCaption: '현대 원자모형: 빛도 이중슬릿을 지나면 파장과 슬릿 간격에 따라 간섭무늬가 나타납니다.',
+    cloudCaption: '현대 원자모형: 오비탈·측정과 이중슬릿 실험을 전환하여 탐구할 수 있습니다.'
+  },
+
+  en: {
+    modernChoose: 'Modern atomic model activity selection',
+    cloudButton: 'View: orbitals and measurement',
+    electronButton: 'Double-slit: electron (matter)',
+    photonButton: 'Double-slit: light (photon)',
+
+    electronTitle: 'Modern: double-slit experiment with electrons',
+    photonTitle: 'Modern: double-slit experiment with light',
+
+    electronSource: 'electron source',
+    lightSource: 'light source',
+    doubleSlit: 'double slit',
+    detectionScreen: 'detection screen',
+    probabilityPattern: 'wave-like probability',
+    lightScreenPattern: 'light interference pattern',
+
+    electronWaveGuide: 'Electrons pass through the two slits like waves.',
+    whichPathWeak: 'If the path is observed, the interference pattern becomes weaker.',
+    lightWaveGuide: 'Light waves from the two slits overlap and form bright and dark fringes.',
+
+    electronStatus: 'Double-slit hits {count} · path observation: {mode}',
+    photonStatus: 'Photon detections {count} · wavelength {wavelength} nm · slit spacing {gap}',
+    electronGuide: 'Even when electrons are sent one by one, a pattern builds up on the screen over time.',
+    lightGuide: 'Longer wavelength makes wider fringes; larger slit spacing makes narrower fringes.',
+
+    observed: 'observed',
+    notObserved: 'not observed',
+
+    electronControls: 'Double-slit electron controls',
+    lightControls: 'Double-slit light controls',
+    slitGap: 'slit spacing',
+    interferenceClarity: 'interference clarity',
+    wavelengthRange: 'wavelength range',
+    sendElectron1: 'Send 1 electron',
+    sendElectron20: 'Send 20 electrons',
+    sendElectron100: 'Send 100 electrons',
+    sendPhoton1: 'Send 1 photon',
+    sendPhoton20: 'Send 20 photons',
+    sendPhoton100: 'Send 100 photons',
+    pathOn: 'Turn on path observation',
+    pathOff: 'Turn off path observation',
+    clearScreen: 'Clear screen',
+
+    electronCaption: 'Modern atomic model: even when electrons are sent one by one, an interference pattern builds up.',
+    photonCaption: 'Modern atomic model: light also forms interference after passing through a double slit, depending on wavelength and slit spacing.',
+    cloudCaption: 'Modern atomic model: switch between orbitals, measurement, and double-slit experiments.'
+  },
+
+  zh: {
+    modernChoose: '现代原子模型活动选择',
+    cloudButton: '查看：轨道和测量',
+    electronButton: '双缝实验：电子（物质）',
+    photonButton: '双缝实验：光（光子）',
+
+    electronTitle: '现代：电子双缝实验',
+    photonTitle: '现代：光子双缝实验',
+
+    electronSource: '电子发射器',
+    lightSource: '光源',
+    doubleSlit: '双缝',
+    detectionScreen: '检测屏',
+    probabilityPattern: '波纹概率',
+    lightScreenPattern: '光的干涉条纹',
+
+    electronWaveGuide: '电子像波一样通过两个狭缝。',
+    whichPathWeak: '观察路径时，干涉条纹会变弱。',
+    lightWaveGuide: '来自两个狭缝的光波相互叠加，形成明暗条纹。',
+
+    electronStatus: '双缝累积 {count} 个 · 路径观测：{mode}',
+    photonStatus: '光子探测 {count} 个 · 波长 {wavelength} nm · 缝间距 {gap}',
+    electronGuide: '即使一次发射一个电子，随着时间推移屏幕上也会累积出条纹。',
+    lightGuide: '波长越长，条纹间距越宽；缝间距越大，条纹间距越窄。',
+
+    observed: '已观测',
+    notObserved: '未观测',
+
+    electronControls: '电子双缝实验控制',
+    lightControls: '光子双缝实验控制',
+    slitGap: '缝间距',
+    interferenceClarity: '干涉清晰度',
+    wavelengthRange: '波长范围',
+    sendElectron1: '发射 1 个电子',
+    sendElectron20: '发射 20 个电子',
+    sendElectron100: '发射 100 个电子',
+    sendPhoton1: '发射 1 个光子',
+    sendPhoton20: '发射 20 个光子',
+    sendPhoton100: '发射 100 个光子',
+    pathOn: '开启路径观测',
+    pathOff: '关闭路径观测',
+    clearScreen: '清除屏幕',
+
+    electronCaption: '现代原子模型：即使一个一个发射电子，屏幕上也会累积出干涉条纹。',
+    photonCaption: '现代原子模型：光通过双缝后，也会根据波长和缝间距形成干涉条纹。',
+    cloudCaption: '现代原子模型：可以在轨道、测量和双缝实验之间切换探究。'
+  },
+
+  ja: {
+    modernChoose: '現代の原子模型の活動選択',
+    cloudButton: '表示：オービタルと測定',
+    electronButton: '二重スリット実験：電子（物質）',
+    photonButton: '二重スリット実験：光（光子）',
+
+    electronTitle: '現代：電子の二重スリット実験',
+    photonTitle: '現代：光の二重スリット実験',
+
+    electronSource: '電子発射器',
+    lightSource: '光源',
+    doubleSlit: '二重スリット',
+    detectionScreen: '検出スクリーン',
+    probabilityPattern: '波のような確率',
+    lightScreenPattern: '光の干渉模様',
+
+    electronWaveGuide: '電子は波のように二つのスリットを通ります。',
+    whichPathWeak: '経路を観察すると、干渉模様は弱くなります。',
+    lightWaveGuide: '二つのスリットから出た光の波が重なり、明暗の縞を作ります。',
+
+    electronStatus: '二重スリット累積 {count}個・経路観察：{mode}',
+    photonStatus: '光子検出 {count}個・波長 {wavelength} nm・スリット間隔 {gap}',
+    electronGuide: '電子を一つずつ送っても、時間がたつとスクリーンに模様が積み重なります。',
+    lightGuide: '波長が長いほど縞の間隔は広くなり、スリット間隔が大きいほど縞の間隔は狭くなります。',
+
+    observed: '観察あり',
+    notObserved: '観察なし',
+
+    electronControls: '電子二重スリット実験の操作',
+    lightControls: '光二重スリット実験の操作',
+    slitGap: 'スリット間隔',
+    interferenceClarity: '干渉の明瞭さ',
+    wavelengthRange: '波長範囲',
+    sendElectron1: '電子を1個送る',
+    sendElectron20: '電子を20個送る',
+    sendElectron100: '電子を100個送る',
+    sendPhoton1: '光子を1個送る',
+    sendPhoton20: '光子を20個送る',
+    sendPhoton100: '光子を100個送る',
+    pathOn: '経路観察をオン',
+    pathOff: '経路観察をオフ',
+    clearScreen: 'スクリーンを消す',
+
+    electronCaption: '現代の原子模型：電子を一つずつ送っても、スクリーンには干渉模様が積み重なります。',
+    photonCaption: '現代の原子模型：光も二重スリットを通ると、波長とスリット間隔によって干渉模様が現れます。',
+    cloudCaption: '現代の原子模型：オービタル、測定、二重スリット実験を切り替えて探究できます。'
+  },
+
+  vi: {
+    modernChoose: 'Chọn hoạt động mô hình nguyên tử hiện đại',
+    cloudButton: 'Xem: orbital và phép đo',
+    electronButton: 'Hai khe: electron (vật chất)',
+    photonButton: 'Hai khe: ánh sáng (photon)',
+
+    electronTitle: 'Hiện đại: thí nghiệm hai khe với electron',
+    photonTitle: 'Hiện đại: thí nghiệm hai khe với ánh sáng',
+
+    electronSource: 'nguồn phát electron',
+    lightSource: 'nguồn sáng',
+    doubleSlit: 'hai khe',
+    detectionScreen: 'màn phát hiện',
+    probabilityPattern: 'xác suất dạng sóng',
+    lightScreenPattern: 'vân giao thoa ánh sáng',
+
+    electronWaveGuide: 'Electron đi qua hai khe như sóng.',
+    whichPathWeak: 'Nếu quan sát đường đi, vân giao thoa sẽ yếu đi.',
+    lightWaveGuide: 'Sóng ánh sáng từ hai khe chồng lên nhau và tạo các vân sáng tối.',
+
+    electronStatus: 'Số điểm hai khe {count} · quan sát đường đi: {mode}',
+    photonStatus: 'Số photon phát hiện {count} · bước sóng {wavelength} nm · khoảng cách khe {gap}',
+    electronGuide: 'Dù gửi từng electron, theo thời gian các vân vẫn tích lũy trên màn hình.',
+    lightGuide: 'Bước sóng dài hơn làm vân rộng hơn; khoảng cách khe lớn hơn làm vân hẹp hơn.',
+
+    observed: 'có quan sát',
+    notObserved: 'không quan sát',
+
+    electronControls: 'Điều khiển hai khe electron',
+    lightControls: 'Điều khiển hai khe ánh sáng',
+    slitGap: 'khoảng cách khe',
+    interferenceClarity: 'độ rõ giao thoa',
+    wavelengthRange: 'vùng bước sóng',
+    sendElectron1: 'Gửi 1 electron',
+    sendElectron20: 'Gửi 20 electron',
+    sendElectron100: 'Gửi 100 electron',
+    sendPhoton1: 'Gửi 1 photon',
+    sendPhoton20: 'Gửi 20 photon',
+    sendPhoton100: 'Gửi 100 photon',
+    pathOn: 'Bật quan sát đường đi',
+    pathOff: 'Tắt quan sát đường đi',
+    clearScreen: 'Xóa màn hình',
+
+    electronCaption: 'Mô hình hiện đại: dù gửi electron từng hạt một, vân giao thoa vẫn tích lũy trên màn hình.',
+    photonCaption: 'Mô hình hiện đại: ánh sáng cũng tạo vân giao thoa sau khi qua hai khe, tùy theo bước sóng và khoảng cách khe.',
+    cloudCaption: 'Mô hình hiện đại: có thể chuyển giữa orbital, phép đo và thí nghiệm hai khe.'
+  }
+};
 
     function dsText(key, vars = {}) {
       const pack = doubleSlitText[state.lang] || doubleSlitText.ko;
